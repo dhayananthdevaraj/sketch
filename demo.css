@@ -1,0 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Quantico);
+
+html, body {
+
+    background: #f2f2f2;
+    overflow: hidden;
+    margin: 0;
+}
+.info {
+
+    font-family: 'Quantico', sans-serif;
+    position: absolute;
+    font-size: 12px;
+    opacity: 0.8;
+    color: #fff;
+    left: 500px;
+    top: 225px;
+}

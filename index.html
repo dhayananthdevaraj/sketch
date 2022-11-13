@@ -1,0 +1,57 @@
+
+<!doctype html>
+<html>
+    <head>
+        <title>sketch.js</title>
+        <link rel="stylesheet" href="demo.css">
+        <style type="text/css">
+            html, body {
+                background: pink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <header class="info">
+            <hgroup class="about">
+                <h1>&nbsp&nbsp&nbsp&nbspPsg college of arts and science&nbsp&nbsp&nbsp&nbsp </h1>
+            </hgroup>
+            <nav class="more">
+                <center>&nbsp&nbsp&nbsp<a href="https://psgcas.ac.in" target="_blank">PSGCAS</a></center>
+            </nav>
+        </header>
+        <script src="sketch.js"></script>
+        <script>
+        var COLOURS = ['#87ceeb'];
+        var radius = 0;
+        Sketch.create({
+            container: document.getElementById( 'container' ),
+            autoclear: false,
+            retina: 'auto',
+            setup: function() {
+                console.log( 'setup' );
+            },
+
+            update: function() {
+                radius = 2 + abs( sin( this.millis * 0.003 ) * 50 );
+            },
+            keydown: function() {
+                if ( this.keys.C ) this.clear();
+            },        
+            touchmove: function() {
+                for ( var i = this.touches.length - 1, touch; i >= 0; i-- ) {
+                    touch = this.touches[i];
+                    this.lineCap = 'round';
+                    this.lineJoin = 'round';
+                    this.fillStyle = this.strokeStyle = COLOURS[ i % COLOURS.length ];
+                    this.lineWidth = radius;
+                    this.beginPath();
+                    this.moveTo( touch.ox, touch.oy );
+                    this.lineTo( touch.x, touch.y );
+                    this.stroke();
+                }
+            }
+        });        
+        </script>
+    </body>
+</html>
